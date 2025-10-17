@@ -10,10 +10,7 @@
   </p>
 
   <p>
-    <a href="https://calor-ease-client.vercel.app/">🌐 Live Demo</a> •
-    <a href="#features">✨ Features</a> •
-    <a href="#tech-stack">🛠 Tech Stack</a> •
-    <a href="#getting-started">🚀 Getting Started</a>
+    <a href="https://calor-ease-client.vercel.app/">🌐 Live Demo</a>
   </p>
 </div>
 
@@ -620,7 +617,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 <div align="center">
   <p>Made with ❤️ for healthy living</p>
   <p>
-    <a href="https://calorease.app">🌐 Visit CalorEase</a> •
-    <a href="mailto:support@calorease.app">📧 Support</a>
+    <a href="https://calor-ease-client.vercel.app/">🌐 Visit CalorEase</a> •
   </p>
 </div>
