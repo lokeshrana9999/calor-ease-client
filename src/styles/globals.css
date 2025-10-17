@@ -148,4 +148,38 @@
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+
+  /* Mobile-friendly utilities */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Ensure minimum touch target size */
+  button, 
+  [role="button"],
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+  }
+
+  /* Improve tap targets on mobile */
+  @media (hover: none) and (pointer: coarse) {
+    button:hover {
+      background-color: initial;
+    }
+  }
 }

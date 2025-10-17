@@ -6,6 +6,13 @@ import '@/styles/globals.css';
 import '@/styles/colors.css';
 
 import { siteConfig } from '@/constant/config';
+import { AuthProvider } from '@/context/AuthContext';
+import { LoadingProvider } from '@/components/providers/LoadingProvider';
+import { RouteLoadingWrapper } from '@/components/layout/RouteLoadingWrapper';
+import { Navigation } from '@/components/layout/Navigation';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { RouteLoadingBar } from '@/components/ui/RouteLoadingBar';
+import { Toaster } from 'sonner';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
@@ -17,6 +24,11 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   robots: { index: true, follow: true },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
   // !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
   // ! copy to /favicon folder
   icons: {
@@ -55,8 +67,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>{children}</body>
+    <html suppressHydrationWarning>
+      <body>
+        <ErrorBoundary>
+          <LoadingProvider>
+            <RouteLoadingWrapper>
+              <AuthProvider>
+                <RouteLoadingBar />
+                <Navigation />
+                <main>{children}</main>
+                <Toaster position="top-right" />
+              </AuthProvider>
+            </RouteLoadingWrapper>
+          </LoadingProvider>
+        </ErrorBoundary>
+      </body>
     </html>
   );
 }
