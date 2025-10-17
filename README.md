@@ -10,7 +10,7 @@
   </p>
 
   <p>
-    <a href="https://calorease.app">🌐 Live Demo</a> •
+    <a href="https://calor-ease-client.vercel.app/">🌐 Live Demo</a> •
     <a href="#features">✨ Features</a> •
     <a href="#tech-stack">🛠 Tech Stack</a> •
     <a href="#getting-started">🚀 Getting Started</a>
