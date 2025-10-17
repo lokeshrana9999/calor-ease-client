@@ -31,7 +31,7 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 
 ---
 
-- ## 🔧 Tech Stack
+## 🔧 Tech Stack
 
 ### Frontend
 - **Framework**: Next.js 15 (App Router)
@@ -112,7 +112,8 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 - Feature highlight cards
 - Responsive layout with mobile optimization
 
-**Insert screenshot here**
+<img width="2545" height="1267" alt="image" src="https://github.com/user-attachments/assets/1910082b-712a-4c66-a02c-ab7433035b31" />
+
 
 ---
 
@@ -132,7 +133,8 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 - Email (required, email validation)
 - Password (required, minimum length)
 
-**Insert screenshot here**
+<img width="2545" height="1267" alt="image" src="https://github.com/user-attachments/assets/717dec1b-ef5f-4650-93ed-f8e43e4ab24b" />
+
 
 #### Register Page (`/auth/register`)
 
@@ -150,7 +152,8 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 - Email (required, email validation)
 - Password (required, strength validation)
 
-**Insert screenshot here**
+<img width="2544" height="1269" alt="image" src="https://github.com/user-attachments/assets/59cd3192-ea32-49c3-a368-65333b779824" />
+
 
 ---
 
@@ -181,7 +184,8 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
    - Search History (→ `/history`)
    - Profile (placeholder)
 
-**Insert screenshot here**
+<img width="2544" height="1268" alt="image" src="https://github.com/user-attachments/assets/add75c80-0ee3-4229-a784-520341602444" />
+
 
 ---
 
@@ -222,7 +226,8 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 - Automatic search history saving
 - Error handling for failed requests
 
-**Insert screenshot here**
+<img width="2546" height="1268" alt="image" src="https://github.com/user-attachments/assets/d0b63d91-06f5-4330-b968-19227271e014" />
+
 
 ---
 
@@ -267,7 +272,8 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 - Duplicate prevention
 - JSON export/import
 
-**Insert screenshot here**
+<img width="2543" height="1269" alt="image" src="https://github.com/user-attachments/assets/b72abf6b-0cad-4267-9a3c-4a244cffd230" />
+
 
 ---
 
@@ -311,7 +317,8 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 - Duplicate existing plans
 - Delete with confirmation
 
-**Insert screenshot here**
+<img width="2546" height="1269" alt="image" src="https://github.com/user-attachments/assets/048c3feb-24e7-4d28-aab8-cbe515652ef8" />
+
 
 ---
 
@@ -361,7 +368,7 @@ Each category includes:
 - Progress bar updates
 - Target achievement indicators
 
-**Insert screenshot here**
+<img width="2544" height="1269" alt="image" src="https://github.com/user-attachments/assets/d73a70f2-0b0f-4a14-8f4d-842c7e652b30" />
 
 ---
 
