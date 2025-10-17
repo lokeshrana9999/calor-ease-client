@@ -34,7 +34,7 @@ CalorEase is a comprehensive calorie tracking application built with **Next.js 1
 
 ---
 
-## 🔧 Tech Stack
+- ## 🔧 Tech Stack
 
 ### Frontend
 - **Framework**: Next.js 15 (App Router)
