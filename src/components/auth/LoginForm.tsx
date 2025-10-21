@@ -36,8 +36,8 @@ export function LoginForm() {
       await login(data);
       // TODO: maybe redirect based on user role later?
       router.push('/dashboard');
-    } catch (error) {
-      // Error is handled by the auth context
+    } catch (error: any) {
+      // Error is handled by the auth context - server message will be shown
       // console.log('Login error details:', error); // Debug - remove later
     } finally {
       setIsSubmitting(false);
@@ -53,44 +53,40 @@ export function LoginForm() {
   // };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className='w-full max-w-md mx-auto'>
       <CardHeader>
         <CardTitle>Login to CalorEase</CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
           <Input
-            label="Email"
-            type="email"
-            placeholder="Enter your email"
+            label='Email'
+            type='email'
+            placeholder='Enter your email'
             error={errors.email?.message}
             {...register('email')}
           />
 
           <Input
-            label="Password"
-            type="password"
-            placeholder="Enter your password"
+            label='Password'
+            type='password'
+            placeholder='Enter your password'
             error={errors.password?.message}
             {...register('password')}
           />
 
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting}
-          >
+          <Button type='submit' className='w-full' disabled={isSubmitting}>
             {isSubmitting ? 'Logging in...' : 'Login'}
           </Button>
         </form>
 
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">
+        <div className='mt-4 text-center'>
+          <p className='text-sm text-gray-600'>
             Don't have an account?{' '}
             <button
-              type="button"
+              type='button'
               onClick={() => router.push('/auth/register')}
-              className="text-blue-600 hover:text-blue-500 font-medium"
+              className='text-blue-600 hover:text-blue-500 font-medium'
             >
               Register here
             </button>

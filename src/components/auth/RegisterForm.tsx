@@ -37,68 +37,69 @@ export function RegisterForm() {
       setIsSubmitting(true);
       await registerUser(data);
       router.push('/dashboard');
-    } catch (error) {
-      // Error is handled by the auth context
+    } catch (error: any) {
+      // Error is handled by the auth context with specific messages
+      // Additional handling could be added here if needed
+      if (error.status === 400) {
+        // Email already exists - user should try logging in
+        // The error message is already shown by AuthContext
+      }
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className='w-full max-w-md mx-auto'>
       <CardHeader>
         <CardTitle>Register for CalorEase</CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
             <Input
-              label="First Name"
-              placeholder="John"
+              label='First Name'
+              placeholder='John'
               error={errors.firstName?.message}
               {...register('firstName')}
             />
 
             <Input
-              label="Last Name"
-              placeholder="Doe"
+              label='Last Name'
+              placeholder='Doe'
               error={errors.lastName?.message}
               {...register('lastName')}
             />
           </div>
 
           <Input
-            label="Email"
-            type="email"
-            placeholder="john@example.com"
+            label='Email'
+            type='email'
+            placeholder='john@example.com'
             error={errors.email?.message}
             {...register('email')}
           />
 
           <Input
-            label="Password"
-            type="password"
-            placeholder="Enter your password"
+            label='Password'
+            type='password'
+            placeholder='Enter your password'
             error={errors.password?.message}
             {...register('password')}
           />
 
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting}
-          >
+          <Button type='submit' className='w-full' disabled={isSubmitting}>
             {isSubmitting ? 'Creating Account...' : 'Create Account'}
           </Button>
         </form>
 
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">
+        <div className='mt-4 text-center'>
+          <p className='text-sm text-gray-600'>
             Already have an account?{' '}
             <button
-              type="button"
+              type='button'
               onClick={() => router.push('/auth/login')}
-              className="text-blue-600 hover:text-blue-500 font-medium"
+              className='text-blue-600 hover:text-blue-500 font-medium'
             >
               Login here
             </button>

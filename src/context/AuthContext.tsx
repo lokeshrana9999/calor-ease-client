@@ -37,7 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (data: LoginRequest) => {
     try {
-      setState(prev => ({ ...prev, isLoading: true }));
+      setState((prev) => ({ ...prev, isLoading: true }));
       const response = await authApi.login(data);
 
       authUtils.setToken(response.token);
@@ -51,15 +51,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       toast.success('Login successful!');
     } catch (error: any) {
-      setState(prev => ({ ...prev, isLoading: false }));
-      toast.error(error.message || 'Login failed');
+      setState((prev) => ({ ...prev, isLoading: false }));
+
+      // Show the actual server error message
+      const errorMessage = error.message || 'Login failed. Please try again.';
+      toast.error(errorMessage);
+
       throw error;
     }
   };
 
   const register = async (data: RegisterRequest) => {
     try {
-      setState(prev => ({ ...prev, isLoading: true }));
+      setState((prev) => ({ ...prev, isLoading: true }));
       const response = await authApi.register(data);
 
       authUtils.setToken(response.token);
@@ -77,8 +81,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       toast.success(response.message || 'Registration successful!');
     } catch (error: any) {
-      setState(prev => ({ ...prev, isLoading: false }));
-      toast.error(error.message || 'Registration failed');
+      setState((prev) => ({ ...prev, isLoading: false }));
+
+      // Show the actual server error message
+      const errorMessage =
+        error.message || 'Registration failed. Please try again.';
+      toast.error(errorMessage);
+
       throw error;
     }
   };
@@ -101,11 +110,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     logout,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
@@ -115,4 +120,3 @@ export function useAuth() {
   }
   return context;
 }
-

@@ -1,6 +1,13 @@
 import axios, { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
-import { AuthResponse, LoginRequest, RegisterRequest, CalorieRequest, CalorieResponse, ApiError } from './types';
+import {
+  AuthResponse,
+  LoginRequest,
+  RegisterRequest,
+  CalorieRequest,
+  CalorieResponse,
+  ApiError,
+} from './types';
 
 const API_BASE_URL = 'https://flybackend-misty-feather-6458.fly.dev';
 
@@ -38,8 +45,12 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
-    if (error.response?.status === 401) {
-      // Token expired or invalid
+    // Only auto-redirect on 401 for protected routes, not auth routes
+    if (
+      error.response?.status === 401 &&
+      !error.config?.url?.includes('/auth/')
+    ) {
+      // Token expired or invalid on protected routes
       Cookies.remove('auth_token');
       window.location.href = '/auth/login';
     }
@@ -68,7 +79,7 @@ export const authApi = {
   },
 };
 
-// Calorie API functions  
+// Calorie API functions
 export const calorieApi = {
   async getCalories(data: CalorieRequest): Promise<CalorieResponse> {
     try {
@@ -83,7 +94,30 @@ export const calorieApi = {
 // Error handler
 function handleApiError(error: unknown): ApiError {
   if (axios.isAxiosError(error)) {
-    const message = error.response?.data?.message || error.message || 'An error occurred';
+    // Try to extract the actual server error message in different formats
+    let message = 'An error occurred';
+
+    if (error.response?.data) {
+      // Try different possible server response formats
+      const responseData = error.response.data;
+      message =
+        responseData.message ||
+        responseData.error ||
+        responseData.detail ||
+        responseData.msg ||
+        JSON.stringify(responseData);
+    } else if (error.message) {
+      message = error.message;
+    }
+
+    // Log the full error for debugging
+    console.log('API Error Details:', {
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message,
+      url: error.config?.url,
+    });
+
     return {
       message,
       status: error.response?.status,
@@ -95,4 +129,3 @@ function handleApiError(error: unknown): ApiError {
 }
 
 export default api;
-
